@@ -58,7 +58,7 @@ export default {
     .position {
       position: relative;
       padding: .16rem 0;
-      padding-right: .16rem;
+      padding-right: .3rem;
       line-height: .22rem;
       font-size: .16rem;
       @include ellipsis;
@@ -72,7 +72,6 @@ export default {
         right: 0;
         top: .17rem;
         font-size: .2rem;
-        margin-left: .1rem;
       }
       color: $content-fontcolor;
     }
