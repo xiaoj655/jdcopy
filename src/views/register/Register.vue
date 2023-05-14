@@ -18,7 +18,7 @@
    <div class="wrapper__register-link" @click="toLoginWeb">已有账号去登录</div>
   </div>
   <Toast v-if="show" :message="toastMessage"/>
- </template>
+</template>
 
 <script>
 import { useRouter } from 'vue-router'
