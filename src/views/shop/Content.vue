@@ -58,6 +58,7 @@ const useProductEffect = (categoryList) => {
     currentTab: categoryList[0].tab,
     productItem: []
   })
+
   const categoryClick = async (tab) => {
     const res = await get('/api/usr/shop/1/products', { tab })
     productData.productItem = res.data

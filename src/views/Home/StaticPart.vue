@@ -72,6 +72,7 @@ export default {
         right: 0;
         top: .17rem;
         font-size: .2rem;
+        margin-left: .1rem;
       }
       color: $content-fontcolor;
     }
@@ -81,8 +82,8 @@ export default {
     background-color: #f5f5f5;
     border-radius: .16rem ;
     height: .32rem;
-    width: 339px;
     line-height: .32rem;
+    // box-sizing: border-box;
     .iconfont{
       font-size: .18rem;
       margin-left: .16rem;
