@@ -5,30 +5,62 @@
      <input type="text" class="wrapper__input__content" placeholder="请输出账号"/>
    </div>
    <div class="wrapper__input">
-     <input type="text" class="wrapper__input__content" placeholder="请输入密码"/>
+     <input type="text" class="wrapper__input__content" placeholder="请输入密码"
+     v-model="pwd"
+     />
    </div>
    <div class="wrapper__input">
-     <input type="text" class="wrapper__input__content" placeholder="请再次输入密码"/>
+     <input type="text" class="wrapper__input__content" placeholder="请再次输入密码"
+     v-model="pwd2"
+     />
    </div>
    <div class="wrapper__register-button" @click="handleRegister">注册</div>
    <div class="wrapper__register-link" @click="toLoginWeb">已有账号去登录</div>
   </div>
+  <Toast v-if="show" :message="toastMessage"/>
  </template>
 
 <script>
 import { useRouter } from 'vue-router'
+import { post } from '../../utils/request'
+import Toast, { useToastEffect } from '../../components/Toast.vue'
+import { reactive, toRefs } from 'vue'
+
+const useRegisterEffect = (showToast) => {
+  const router = useRouter()
+  const data = reactive({
+    usrname: '',
+    pwd: '',
+    pwd2: ''
+  })
+
+  const handleRegister = async () => {
+    try {
+      const res = await post('/api/usr/register', data)
+      if (res?.status === 200) {
+        router.push({ name: 'Login' })
+      } else {
+        showToast('no space!')
+        console.log(1)
+      }
+    } catch (err) {
+      showToast('error!')
+    }
+  }
+  const toLoginWeb = () => {
+    router.push({ name: 'Login' })
+  }
+  const { usrname, pwd, pwd2 } = toRefs(data)
+  return { handleRegister, toLoginWeb, usrname, pwd, pwd2 }
+}
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Register',
+  components: { Toast },
   setup () {
-    const router = useRouter()
-    const handleRegister = () => {
-      router.push({ name: 'Login' })
-    }
-    const toLoginWeb = () => {
-      router.push({ name: 'Login' })
-    }
-    return { handleRegister, toLoginWeb }
+    const { show, toastMessage, showToast } = useToastEffect()
+    const { handleRegister, toLoginWeb, usrname, pwd, pwd2 } = useRegisterEffect(showToast)
+    return { handleRegister, toLoginWeb, show, usrname, pwd, pwd2, toastMessage }
   }
 }
 </script>

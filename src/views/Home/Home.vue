@@ -17,7 +17,9 @@ export default {
 }
 
 </script>
-  <style lang="scss">
-  @import '../../style/virables.scss';
-  @import '../../style/mixins.scss';
+  <style lang="scss" scoped>
+  .wrapper{
+    padding: .2rem;
+    overflow-x: hidden;
+  }
   </style>
