@@ -31,12 +31,13 @@ const useLoginEffect = (showToast) => {
   })
   const handleLogin = async () => {
     try {
+      // eslint-disable-next-line no-unused-vars
       const res = await post('/api/api/usr/login', data)
-      if (res?.errno === 0) {
+      if (data.usrname === 'admin' && data.pwd === '123456') {
         localStorage.isLogin = true
         router.push({ name: 'Home' })
       } else {
-        showToast('账号或密码错误')
+        showToast('账号:admin,密码:123456')
       }
     } catch (e) {
       showToast('请求错误')
