@@ -83,7 +83,7 @@ export default {
     border-radius: .16rem ;
     height: .32rem;
     line-height: .32rem;
-    width: 3.17rem;
+    width: 3.1rem;
     // box-sizing: border-box;
     .iconfont{
       font-size: .18rem;
