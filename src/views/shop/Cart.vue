@@ -6,7 +6,7 @@
   </div>
   <div class="price">
     总计：
-    <span class="price__number">&yen;{{ itemTotal }}</span>
+    <span class="price__number">&yen; {{ itemTotal }}</span>
   </div>
   <div class="commit">
     去结算
@@ -29,7 +29,7 @@ const itemTotal = computed(() => {
       itemTotal += cartList[route.params.id][i].cnt * cartList[route.params.id][i].nowprice
     }
   }
-  return itemTotal
+  return itemTotal.toFixed(2)
 })
 
 const accounts = computed(() => {
@@ -81,11 +81,11 @@ export default {
     line-height: .18rem;
     font-size: .16rem;
     height: .2rem;
-    width: .2rem;
+    min-width: .2rem;
     transform: scale(.5);
     color: #FFF;
     background: #E93B3B;
-    border-radius: 50%;
+    border-radius: .1rem;
   }
 }
 .price {
