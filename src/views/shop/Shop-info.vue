@@ -13,6 +13,7 @@
     </div>
     <Shop :item="item" :hideBorder="true"/>
     <Content />
+    <Cart />
   </div>
 </template>
 
@@ -22,6 +23,7 @@ import Shop from '../../components/Shop.vue'
 import { useRouter, useRoute } from 'vue-router'
 import { get } from '../../utils/request'
 import Content from './Content.vue'
+import Cart from './Cart.vue'
 
 const useGetItemEffect = () => {
   const route = useRoute()
@@ -37,7 +39,7 @@ const useGetItemEffect = () => {
 }
 export default {
   name: 'shop-info',
-  components: { Shop, Content },
+  components: { Shop, Content, Cart },
   setup () {
     const router = useRouter()
     const handleBackClick = () => {

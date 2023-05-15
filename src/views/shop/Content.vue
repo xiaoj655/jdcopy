@@ -80,7 +80,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .content {
   position: absolute;
   display: flex;
@@ -91,6 +91,7 @@ export default {
   .category{
     width: .76rem;
     height: 100%;
+    background: #F5F5F5;
     overflow-y: scroll;
     &__tag {
       font-size: .14rem;
@@ -98,7 +99,6 @@ export default {
       line-height: .4rem;
       text-align: center;
       color: #333;
-      background: #F5F5F5;
       &--active {
         background: #FFF;
       }
