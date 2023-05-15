@@ -45,7 +45,7 @@ export default {
     padding: 0;
     top: 0rem;
     right: .04rem;
-    line-height: .24rem;
+    line-height: .18rem;
     height: .2rem;
     width: .2rem;
     transform: scale(.5);
