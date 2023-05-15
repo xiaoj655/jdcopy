@@ -21,9 +21,9 @@
           <div class="product__price__origin">&yen;{{ item.oldprice }}</div>
         </div>
         <div class="product__amounts">
-          <span class="product__amounts__mins">-</span>
-          <span class="product__amounts__number">0</span>
-          <span class="product__amounts__plus">+</span>
+          <span class="product__amounts__mins" @click="() => changgeItemCounts(shopId, item, -1)">-</span>
+          <span class="product__amounts__number">{{ cartList?.[shopId]?.[item.id]?.cnt || 0 }}</span>
+          <span class="product__amounts__plus" @click="() => changgeItemCounts(shopId, item, 1)">+</span>
         </div>
       </div>
     </div>
@@ -34,6 +34,8 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import { get } from '../../utils/request'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
 
 const useCategoryEffect = () => {
   const categoryList = [
@@ -69,13 +71,27 @@ const useProductEffect = (categoryList) => {
   return { categoryClick, productItem, currentTab }
 }
 
+const useCartEffect = () => {
+  const store = useStore()
+  const { cartList } = toRefs(store.state)
+  const changgeItemCounts = (shopId, item, changePara) => {
+    store.commit('changePdtCnt', {
+      shopId, item, changePara
+    })
+  }
+  return { cartList, changgeItemCounts }
+}
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'content',
   setup () {
+    const route = useRoute()
+    const shopId = route.params.id
     const { categoryList } = useCategoryEffect()
     const { categoryClick, productItem, currentTab } = useProductEffect(categoryList)
-    return { categoryList, categoryClick, productItem, currentTab }
+    const { cartList, changgeItemCounts } = useCartEffect()
+    return { categoryList, categoryClick, productItem, currentTab, shopId, cartList, changgeItemCounts }
   }
 }
 </script>

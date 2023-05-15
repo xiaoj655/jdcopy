@@ -2,11 +2,11 @@
 <div class="cart__wrapper">
   <div class="cart iconfont">
     &#xe61d;
-    <div class="cart__amount">1</div>
+    <div class="cart__amount">{{ accounts }}</div>
   </div>
   <div class="price">
     总计：
-    <span class="price__number">&yen;128</span>
+    <span class="price__number">&yen;{{ itemTotal }}</span>
   </div>
   <div class="commit">
     去结算
@@ -15,9 +15,42 @@
 </template>
 
 <script>
+import { computed } from 'vue'
+import { useRoute } from 'vue-router'
+import { useStore } from 'vuex'
+
+const itemTotal = computed(() => {
+  const store = useStore()
+  const route = useRoute()
+  const cartList = store.state.cartList
+  let itemTotal = 0
+  if (cartList?.[route.params.id]) {
+    for (const i in cartList[route.params.id]) {
+      itemTotal += cartList[route.params.id][i].cnt * cartList[route.params.id][i].nowprice
+    }
+  }
+  return itemTotal
+})
+
+const accounts = computed(() => {
+  const store = useStore()
+  const route = useRoute()
+  const cartList = store.state?.cartList?.[route.params.id]
+  let accounts = 0
+  if (cartList) {
+    for (const i in cartList) {
+      accounts += cartList[i].cnt
+    }
+  }
+  return accounts
+})
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
-  name: 'Cart'
+  name: 'Cart',
+  setup () {
+    return { itemTotal, accounts }
+  }
 }
 </script>
 
@@ -46,6 +79,7 @@ export default {
     top: 0rem;
     right: .04rem;
     line-height: .18rem;
+    font-size: .16rem;
     height: .2rem;
     width: .2rem;
     transform: scale(.5);
