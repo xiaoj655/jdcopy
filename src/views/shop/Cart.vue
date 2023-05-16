@@ -1,5 +1,6 @@
 <template>
-  <div class="product">
+  <div class="mask" v-if="showCartList"></div>
+  <div class="product" v-if="showCartList">
     <div class="product__header">
       <div class="product__header__right"><span class="selectall iconfont"
         v-html="selectAllOr ? '&#xe60b;' : '&#xe80c;'"
@@ -29,8 +30,8 @@
       </div>
     </div>
   </div>
-<div class="cart__wrapper">
-  <div class="cart iconfont">
+<div class="cart__wrapper" @click="() => showCartList = !showCartList">
+  <div class="cart iconfont" >
     &#xe61d;
     <div class="cart__amount">{{ accounts }}</div>
   </div>
@@ -46,7 +47,7 @@
 
 <script>
 import { useCartEffect } from '@/effects/changeCartcntsEffects'
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import { useRoute } from 'vue-router'
 import { useStore } from 'vuex'
 
@@ -103,14 +104,16 @@ const useProductEffect = () => {
   })
   return { productItem }
 }
+
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Cart',
   setup () {
     const shopId = useRoute().params.id
+    const showCartList = ref(false)
     const { productItem } = useProductEffect()
     const { cartList, changgeItemCounts, shiftSelectAll, clearCart } = useCartEffect()
-    return { itemTotal, accounts, productItem, cartList, changgeItemCounts, shiftSelectAll, clearCart, shopId, selectAllOr }
+    return { itemTotal, accounts, productItem, cartList, changgeItemCounts, shiftSelectAll, clearCart, shopId, selectAllOr, showCartList }
   }
 }
 </script>
@@ -124,6 +127,7 @@ export default {
   right:0;
   left:0;
   background: #FFF;
+  z-index: 2;
 }
 .cart {
   position: relative;
@@ -134,6 +138,8 @@ export default {
   font-size: .24rem;
   color: #4FB0F9 ;
   border-top: .01rem solid #FFF;
+  z-index: 2;
+  background-color: #FFF;
   &__amount {
     position: absolute;
     padding: 0;
@@ -173,7 +179,8 @@ export default {
   flex:1;
   overflow-y: scroll;
   overflow-x: hidden;
-  background: #fff;
+  background: #FFF;
+  z-index: 2;
   position: absolute;
   bottom: .5rem;
   right: 0;
@@ -297,5 +304,14 @@ export default {
   bottom: .05rem;
   font-size: .14rem;
   color: #333;
+}
+.mask {
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0, .5);
+  z-index: 1;
 }
 </style>
