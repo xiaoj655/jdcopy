@@ -35,7 +35,7 @@
 import { reactive, toRefs } from 'vue'
 import { get } from '../../utils/request'
 import { useRoute } from 'vue-router'
-import { useStore } from 'vuex'
+import { useCartEffect } from '@/effects/changeCartcntsEffects'
 
 const useCategoryEffect = () => {
   const categoryList = [
@@ -71,16 +71,16 @@ const useProductEffect = (categoryList) => {
   return { categoryClick, productItem, currentTab }
 }
 
-const useCartEffect = () => {
-  const store = useStore()
-  const { cartList } = toRefs(store.state)
-  const changgeItemCounts = (shopId, item, changePara) => {
-    store.commit('changePdtCnt', {
-      shopId, item, changePara
-    })
-  }
-  return { cartList, changgeItemCounts }
-}
+// const useCartEffect = () => {
+//   const store = useStore()
+//   const { cartList } = toRefs(store.state)
+//   const changgeItemCounts = (shopId, item, changePara) => {
+//     store.commit('changePdtCnt', {
+//       shopId, item, changePara
+//     })
+//   }
+//   return { cartList, changgeItemCounts }
+// }
 
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
@@ -90,8 +90,8 @@ export default {
     const shopId = route.params.id
     const { categoryList } = useCategoryEffect()
     const { categoryClick, productItem, currentTab } = useProductEffect(categoryList)
-    const { cartList, changgeItemCounts } = useCartEffect()
-    return { categoryList, categoryClick, productItem, currentTab, shopId, cartList, changgeItemCounts }
+    const { cartList, changgeItemCounts, shiftSelectAll } = useCartEffect()
+    return { categoryList, categoryClick, productItem, currentTab, shopId, cartList, changgeItemCounts, shiftSelectAll }
   }
 }
 </script>
