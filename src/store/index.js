@@ -49,7 +49,6 @@ export default createStore({
     },
     setShopName (state, payload) {
       const { res } = payload
-      console.log(res.data)
       for (const i in res.data) {
         state.shopName[res.data[i]._id] = res.data[i].name
       }

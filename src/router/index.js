@@ -23,6 +23,21 @@ const routes = [
     path: '/register',
     name: 'Register',
     component: () => import(/* webpackChunkNameL "home_123" */ '../views/register/Register.vue')
+  },
+  {
+    path: '/usrinfo',
+    name: 'Usrinfo',
+    component: () => import(/* webpackChunkNameL "home_123" */ '../views/usrinfo/Usr-info.vue')
+  },
+  {
+    path: '/order',
+    name: 'Order',
+    component: () => import(/* webpackChunkNameL "home_123" */ '../views/order/Order.vue')
+  },
+  {
+    path: '/cart',
+    name: 'Cart',
+    component: () => import(/* webpackChunkNameL "home_123" */ '../views/cart/Cart.vue')
   }
 ]
 

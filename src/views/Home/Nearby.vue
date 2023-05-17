@@ -41,7 +41,6 @@ export default {
     const { nearbyList, getItems } = useNearbyEffect()
     getItems()
     setShopName(store)
-    // console.log(nearbyList.value)
     return { nearbyList }
   }
 }

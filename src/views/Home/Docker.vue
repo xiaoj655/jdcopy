@@ -22,9 +22,9 @@ export default {
   setup () {
     const dockerList = [
       { icon: '&#xe7c6;', text: '首页', go: 'Home' },
-      { icon: '&#xe698;', text: '购物车', go: 'Home' },
-      { icon: '&#xe600;', text: '订单', go: 'Home' },
-      { icon: '&#xe78b;', text: '我的', go: 'Home' }
+      { icon: '&#xe698;', text: '购物车', go: 'Cart' },
+      { icon: '&#xe600;', text: '订单', go: 'Order' },
+      { icon: '&#xe78b;', text: '我的', go: 'Usrinfo' }
     ]
     const currentPage = ref('首页')
     return { dockerList, currentPage }
