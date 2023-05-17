@@ -1,25 +1,33 @@
 <template>
 <div class="docker">
-      <span v-for="(item, index) in dockerList" :key="index"
-      :class="{'docker__item': true,'docker__item--active': index===0}">
-        <div class="iconfont" v-html="item.icon"></div>
-        <div class="docker__title">{{ item.text }}</div>
-      </span>
+    <span v-for="(item, index) in dockerList" :key="index"
+      :class="{'docker__item': true,'docker__item--active': item.text === currentPage}"
+      @click="()=> currentPage = item.text"
+      >
+      <router-link :to="{ name:item.go }"
+      style="text-decoration: none;"
+      >
+      <div class="iconfont" v-html="item.icon"></div>
+      <div class="docker__title">{{ item.text }}</div>
+      </router-link>
+    </span>
     </div>
 </template>
 
 <script>
+import { ref } from 'vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Docker',
   setup () {
     const dockerList = [
-      { icon: '&#xe7c6;', text: '首页' },
-      { icon: '&#xe698;', text: '购物车' },
-      { icon: '&#xe600;', text: '订单' },
-      { icon: '&#xe78b;', text: '我的' }
+      { icon: '&#xe7c6;', text: '首页', go: 'Home' },
+      { icon: '&#xe698;', text: '购物车', go: 'Home' },
+      { icon: '&#xe600;', text: '订单', go: 'Home' },
+      { icon: '&#xe78b;', text: '我的', go: 'Home' }
     ]
-    return { dockerList }
+    const currentPage = ref('首页')
+    return { dockerList, currentPage }
   }
 }
 </script>
@@ -47,11 +55,17 @@ export default {
       margin-bottom: .018rem;
       font-size: .2rem;
     }
-    &--active{
+    &--active {
     color: #1FA4FC;
       }
     }
   }
+.docker__item a {
+  color: #333;
+}
+.docker__item.docker__item--active a {
+  color: #1FA4FC;
+}
 
   .docker__title{
     font-size: 20px;
