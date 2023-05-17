@@ -11,14 +11,13 @@
 import { ref } from 'vue'
 import { get } from '../../utils/request'
 import Shop from '../../components/Shop.vue'
+import { useStore } from 'vuex'
 
 const useNearbyEffect = () => {
   const nearbyList = ref([])
   const getItems = async () => {
     try {
       const res = await get('/api/usr/hot-list')
-      console.log(res)
-      console.log(1)
       if (res?.errno === 0) {
         nearbyList.value = res.data
       }
@@ -26,16 +25,22 @@ const useNearbyEffect = () => {
       console.log('error')
     }
   }
-
   return { nearbyList, getItems }
+}
+
+const setShopName = async (store) => {
+  const res = await get('/api/usr/hot-list')
+  store.commit('setShopName', { res })
 }
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Nearby',
   components: { Shop },
   setup () {
+    const store = useStore()
     const { nearbyList, getItems } = useNearbyEffect()
     getItems()
+    setShopName(store)
     // console.log(nearbyList.value)
     return { nearbyList }
   }

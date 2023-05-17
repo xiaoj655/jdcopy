@@ -1,5 +1,5 @@
 <template>
-  <div class="mask" v-if="showCartList"></div>
+  <div class="mask" v-if="showCartList" @click="() => showCartList = !showCartList"></div>
   <div class="product" v-if="showCartList">
     <div class="product__header">
       <div class="product__header__right"><span class="selectall iconfont"
@@ -40,7 +40,9 @@
     <span class="price__number">&yen; {{ itemTotal }}</span>
   </div>
   <div class="commit">
+    <router-link :to="{ name: 'Home' }" style="text-decoration: none; color: #FFF;">
     去结算
+    </router-link>
   </div>
 </div>
 </template>
@@ -54,6 +56,7 @@ import { useStore } from 'vuex'
 const itemTotal = computed(() => {
   const store = useStore()
   const route = useRoute()
+  // console.log(store)
   const cartList = store.state.cartList
   let itemTotal = 0
   if (cartList?.[route.params.id]) {
@@ -235,7 +238,7 @@ export default {
       // background-color: #333;
       position: absolute;
       right: .3rem;
-      bottom: .1rem;
+      bottom: .35rem;
       &__mins, &__plus {
         display: inline-block;
         width: .2rem;
@@ -292,6 +295,7 @@ export default {
   padding: 0;
   margin-left: .1rem;
   // margin-top: .3rem;
+  vertical-align: top;
   position: relative;
   bottom: -.02rem;
   margin-right: .12rem;
@@ -301,7 +305,6 @@ export default {
 .text1 {
   position: absolute;
   right: .2rem;
-  bottom: .05rem;
   font-size: .14rem;
   color: #333;
 }
