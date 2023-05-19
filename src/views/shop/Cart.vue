@@ -40,7 +40,7 @@
     <span class="price__number">&yen; {{ itemTotal }}</span>
   </div>
   <div class="commit">
-    <router-link :to="{ name: 'Home' }" style="text-decoration: none; color: #FFF;">
+    <router-link :to="{ path: `/orderConfirmation/${shopId}` }" style="text-decoration: none; color: #FFF;">
     去结算
     </router-link>
   </div>

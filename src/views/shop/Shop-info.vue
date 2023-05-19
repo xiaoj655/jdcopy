@@ -1,11 +1,11 @@
 <template>
   <div class="wrapper">
     <div class="search">
-      <div class="search__back iconfont"
-      @click="handleBackClick"
-      >
+      <router-link :to="{ path:'/' }">
+      <div class="search__back iconfont">
         &#xe662;
       </div>
+      </router-link>
       <div class="search__content">
         <span class="search__content__icon iconfont">&#xe6e1;</span>
         <input class="search__content__input" placeholder="请输入商品名称搜索"/>
@@ -20,7 +20,7 @@
 <script>
 import { reactive, toRefs } from 'vue'
 import Shop from '../../components/Shop.vue'
-import { useRouter, useRoute } from 'vue-router'
+import { useRoute } from 'vue-router'
 import { get } from '../../utils/request'
 import Content from './Content.vue'
 import Cart from './Cart.vue'
@@ -41,13 +41,9 @@ export default {
   name: 'shop-info',
   components: { Shop, Content, Cart },
   setup () {
-    const router = useRouter()
-    const handleBackClick = () => {
-      router.back()
-    }
     const { item, getItemsData } = useGetItemEffect()
     getItemsData()
-    return { item, handleBackClick }
+    return { item }
   }
 }
 </script>
@@ -64,6 +60,10 @@ export default {
   &__back {
     font-size: .3rem;
     color: #B6B6B6;
+    a {
+      text-decoration: none;
+      color: #B6B6B6;
+    }
   }
   &__content {
     display: flex;
