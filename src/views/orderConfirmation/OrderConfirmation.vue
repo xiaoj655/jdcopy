@@ -153,8 +153,9 @@ export default {
       color: #E93B3B;
       font-size: .14rem;
       bottom: 0;
-      width: 2.84rem;
+      width: 80%;
       .total {
+        // position: absolute;
         color:#000;
         float: right;
         font-size: .14rem;
