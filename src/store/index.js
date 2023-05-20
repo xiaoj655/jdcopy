@@ -16,7 +16,8 @@ const getLocalCartList = () => {
 export default createStore({
   state: {
     cartList: getLocalCartList(),
-    shopName: {}
+    shopName: {},
+    shopStatus: []
   },
   getters: {
   },
@@ -53,6 +54,26 @@ export default createStore({
         state.shopName[res.data[i]._id] = res.data[i].name
       }
       setLocalCartList(state)
+    },
+    cancelOrder (state, payload) {
+      const { shopId } = payload
+      const obj = {
+        name: state.shopName[shopId],
+        info: state.cartList[shopId],
+        status: 'confirmed'
+      }
+      state.shopStatus.push({ obj })
+      state.cartList[shopId] = {}
+    },
+    confirmOrder (state, payload) {
+      const { shopId } = payload
+      const obj = {
+        name: state.shopName[shopId],
+        info: state.cartList[shopId],
+        status: 'confirmed'
+      }
+      state.shopStatus.push({ obj })
+      state.cartList[shopId] = {}
     }
   },
   actions: {

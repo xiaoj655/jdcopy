@@ -11,7 +11,7 @@
       <div class="docker__title">{{ item.text }}</div>
       </router-link>
     </span>
-    </div>
+</div>
 </template>
 
 <script>
@@ -38,7 +38,7 @@ export default {
 
 .docker{
     display: flex;
-    position: absolute;
+    position: fixed;
     box-sizing: border-box;
     padding: 0 .18rem;
     left: 0;
@@ -47,6 +47,7 @@ export default {
     height: 0.49rem;
     border-top: .01rem solid #f1f1f1;
     color: $content-fontcolor;
+    background-color: #fff;
     &__item {
     flex:1;
     text-align: center;
