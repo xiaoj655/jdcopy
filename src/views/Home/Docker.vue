@@ -69,7 +69,7 @@ export default {
 }
 
   .docker__title{
-    font-size: 20px;
+    font-size: .2rem;
     transform: scale(0.5,0.5);
     transform-origin: center top;
   }

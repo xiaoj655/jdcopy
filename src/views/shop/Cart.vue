@@ -194,7 +194,7 @@ export default {
       height: .92rem;
       width: 100%;
       // padding: 0 .16rem;
-      border-bottom: 1px solid #F1F1F1;
+      border-bottom: .01rem solid #F1F1F1;
       color: #0091FF;
       &__img {
         height: .5rem;
@@ -278,7 +278,7 @@ export default {
 }
 .product__header {
   display: flex;
-  border-bottom:1px solid #F1F1F1 ;
+  border-bottom: .01rem solid #F1F1F1 ;
   padding: 0;
   &__right {
     width: .8rem;

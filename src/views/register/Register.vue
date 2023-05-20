@@ -104,8 +104,8 @@ export default {
      margin: .32rem .4rem 0 .4rem;
      line-height: .49rem;
      background: #0091FF;
-     box-shadow: 0 4px 8px 0 rgba(0,145,255,0.32);
-     border-radius: 4px;
+     box-shadow: 0 .04rem .08rem 0 rgba(0,145,255,0.32);
+     border-radius: .04rem;
      color: #fff;
      font-size: .16rem;
      text-align: center;
@@ -113,7 +113,7 @@ export default {
    &__register-link {
      margin: .16rem auto auto auto;
      text-align: center;
-     font-size: 14px;
+     font-size: .14rem;
      color: rgba(0,0,0,0.50);
      letter-spacing: 0;
    }

@@ -70,7 +70,7 @@ export default {
     flex: 1;
     margin-left: .12rem;
     background: $search-bgColor;
-    border-radius: 16px;
+    border-radius: .16rem;
     width: 100%;
     &__icon{
       margin-left: .1rem;

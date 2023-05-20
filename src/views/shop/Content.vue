@@ -130,7 +130,7 @@ export default {
       height: .92rem;
       width: 100%;
       padding: 0 .16rem;
-      border-bottom: 1px solid #F1F1F1;
+      border-bottom: .01rem solid #F1F1F1;
       &__img {
         height: .68rem;
         width: .68rem;
@@ -184,7 +184,7 @@ export default {
         line-height: .16rem;
         margin-right: .1rem;
         color: #666;
-        border: 1px solid #666;
+        border: .01rem solid #666;
       }
       &__plus {
         color: #FFF;

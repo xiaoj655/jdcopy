@@ -270,7 +270,7 @@ export default {
     &__btn1 {
       flex:1;
       color: #0091FF;
-      border: 1px solid #0091FF ;
+      border: .01rem solid #0091FF ;
       text-align: center;
       line-height: .32rem;
       width: .8rem;
