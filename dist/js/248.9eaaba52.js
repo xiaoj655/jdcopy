@@ -1,0 +1,2 @@
+"use strict";(self["webpackChunkjd"]=self["webpackChunkjd"]||[]).push([[248],{9248:function(e,n,r){function u(e,n){return" Here is usrinfopage! "}r.r(n),r.d(n,{default:function(){return f}});var t=r(89);const s={},c=(0,t.Z)(s,[["render",u]]);var f=c}}]);
+//# sourceMappingURL=248.9eaaba52.js.map
