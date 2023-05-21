@@ -19,22 +19,24 @@ import { ref } from 'vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Docker',
-  setup () {
+  props: ['page'],
+  setup (props) {
+    const currentPage = ref(props.page)
     const dockerList = [
       { icon: '&#xe7c6;', text: '首页', go: 'Home' },
       { icon: '&#xe698;', text: '购物车', go: 'Cart' },
       { icon: '&#xe600;', text: '订单', go: 'Order' },
       { icon: '&#xe78b;', text: '我的', go: 'Usrinfo' }
     ]
-    const currentPage = ref('首页')
+    // const currentPage = ref('首页')
     return { dockerList, currentPage }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-@import '../../style/mixins.scss';
-@import '../../style/virables.scss';
+@import '../style/mixins.scss';
+@import '../style/virables.scss';
 
 .docker{
     display: flex;

@@ -3,13 +3,13 @@
   <StaticPart />
   <Nearby />
 </div>
-  <docker/>
+  <Docker page='首页'/>
 </template>
 
 <script>
 import StaticPart from './StaticPart.vue'
 import Nearby from './Nearby.vue'
-import Docker from './Docker.vue'
+import Docker from '../../components/Docker.vue'
 export default {
   // eslint-disable-next-line vue/multi-word-component-names
   name: 'Home',
