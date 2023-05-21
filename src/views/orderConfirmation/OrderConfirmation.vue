@@ -71,10 +71,10 @@ const useCommitEffect = (store, shopId, showToast, router) => {
   }
   const confirmOrder = () => {
     store.commit('confirmOrder', { shopId })
+    showToast('订单已完成')
     setTimeout(() => {
-      showToast('订单已完成')
+      router.push({ name: 'Home' })
     }, 1500)
-    router.push({ name: 'Home' })
   }
   return { confirmOrder, cancelOrder }
 }

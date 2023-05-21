@@ -21,9 +21,9 @@
           <div class="product__price__origin">&yen;{{ item.oldprice }}</div>
         </div>
         <div class="product__amounts">
-          <span class="product__amounts__mins" @click="() => changgeItemCounts(shopId, item, -1)">-</span>
+          <span class="product__amounts__mins iconfont" @click="() => changgeItemCounts(shopId, item, -1)">&#xe93b;</span>
           <span class="product__amounts__number">{{ cartList?.[shopId]?.[item.id]?.cnt || 0 }}</span>
-          <span class="product__amounts__plus" @click="() => changgeItemCounts(shopId, item, 1)">+</span>
+          <span class="product__amounts__plus iconfont" @click="() => changgeItemCounts(shopId, item, 1)">&#xe845;</span>
         </div>
       </div>
     </div>
@@ -167,31 +167,18 @@ export default {
       }
     }
     &__amounts {
-      // background-color: #333;
       position: absolute;
       right: .6rem;
       bottom: .1rem;
-      &__mins, &__plus {
-        display: inline-block;
-        width: .2rem;
-        height: .2rem;
-        font-size: .3rem;
-        text-align: center;
-      }
       &__mins {
-        box-sizing: border-box;
-        border-radius: 50%;
-        line-height: .16rem;
         margin-right: .1rem;
-        color: #666;
-        border: .01rem solid #666;
+        font-size: .2rem;
+        color: #0091FF;
       }
       &__plus {
-        color: #FFF;
-        line-height: .2rem;
-        background-color: #0091FF;
-        border-radius: 50%;
         margin-left: .1rem;
+        font-size: .2rem;
+        color: #0091FF;
       }
       &__number {
         position: relative;
